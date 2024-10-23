@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{Base::parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title data-th-text="${loggedInUser.name}+'| Dashboard'">Dashboard Page</title>
+</head>
+<body>
+    <div id="content">
+
+        <!--Side Bar if user logged In-->
+        <div th:if="${loggedInUser}">
+            <div data-th-replace="~{user/sidebar::sidebar}"></div>
+         </div>
+
+
+        <div class="text-gray-900 dark:text-white sm:pl-64 pt-20">
+            <div class="flex justify-center flex-col items-center">
+            <h1 class="text-5xl mb-6">Welcome to Dashboard Page</h1>
+            <div class="flex justify-center w-full space-x-6">
+                <div class=" w-6/12 text-center bg-white dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-blue-500">
+                    <a data-th-href="@{/user/contacts}">
+                        <i class="fa-solid fa-address-book mb-2"></i>
+                        <p 
+                            class="text-2xl font-semibold">1001 Contacts</p>
+                        <p class="mb-4">Tap to List all stored contacts.</p>
+                    </a>
+                </div>
+                <div class=" w-6/12 text-center bg-white dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-blue-500">
+                    <a data-th-href="@{/user/contacts/favourite}">
+                        <i class="fa-solid fa-star mb-2"></i>
+                        <p class="text-2xl font-semibold">50 Favourite Contacts</p>
+                        <p class="mb-4">Tap to List all the favourite contacts.</p>
+
+                    </a>
+                </div>
+            </div>
+
+            <div class="rounded-lg px-3 py-2 bg-blue-700 text-white mt-6">
+                <a data-th-href="@{/user/contacts/add}" >
+                    <span>Add contacts to profile</span>
+                </a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script></script>
+
+</body>
+</html>
